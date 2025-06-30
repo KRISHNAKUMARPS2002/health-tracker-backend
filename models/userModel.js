@@ -1,14 +1,23 @@
 const db = require("../config/db");
 
 const createUser = async (userData) => {
-  const { name, email, password, age, gender, marital_status, weight, height } =
-    userData;
+  const {
+    name,
+    email,
+    password,
+    age,
+    gender,
+    marital_status,
+    weight,
+    height,
+    blood_group,
+  } = userData;
 
   const query = `
     INSERT INTO users 
-    (name, email, password, age, gender, marital_status, weight, height)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-    RETURNING id, name, email, age, gender, marital_status, weight, height, created_at;
+    (name, email, password, age, gender, marital_status, weight, height, blood_group)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+    RETURNING id, name, email, age, gender, marital_status, weight, height, blood_group, created_at;
   `;
 
   const values = [
@@ -20,6 +29,7 @@ const createUser = async (userData) => {
     marital_status,
     weight,
     height,
+    blood_group,
   ];
 
   const result = await db.query(query, values);

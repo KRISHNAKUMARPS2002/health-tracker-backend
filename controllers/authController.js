@@ -13,6 +13,7 @@ const register = async (req, res, next) => {
       marital_status,
       weight,
       height,
+      blood_group,
     } = req.body;
 
     // Check if user exists
@@ -32,6 +33,7 @@ const register = async (req, res, next) => {
       marital_status,
       weight,
       height,
+      blood_group,
     });
 
     res.status(201).json({ message: "User registered", user: newUser });

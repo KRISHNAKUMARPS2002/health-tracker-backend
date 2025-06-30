@@ -1,8 +1,17 @@
 // app.js
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const logger = require("./utils/logger");
 const authRoutes = require("./routes/authRoutes");
+
+// ✅ Enable CORS
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 
 // Middleware
 app.use(express.json());
