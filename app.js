@@ -4,6 +4,9 @@ const app = express();
 const cors = require("cors");
 const logger = require("./utils/logger");
 const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
+const vitalsRoutes = require("./routes/vitalsRoutes");
+const dietRoutes = require("./routes/dietRoutes");
 
 // ✅ Enable CORS
 app.use(
@@ -22,8 +25,14 @@ app.get("/", (req, res) => {
   res.send("🚀 Health Tracker API is Live");
 });
 
-// Auth Route
+// Auth Routes
 app.use("/api/auth", authRoutes);
+// User Routes
+app.use("/api/users", userRoutes);
+// Vitals Routes
+app.use("/api/vitals", vitalsRoutes);
+// Diet Routes
+app.use("/api/diet", dietRoutes);
 
 // Global error handler
 app.use((err, req, res, next) => {
