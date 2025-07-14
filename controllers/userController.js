@@ -17,7 +17,7 @@ const updateProfile = async (req, res, next) => {
   try {
     const userId = req.user.userId;
 
-    const { password, weight, height, marital_status } = req.body;
+    const { password, weight, height, marital_status, age } = req.body;
 
     const updateData = {};
 
@@ -27,6 +27,7 @@ const updateProfile = async (req, res, next) => {
 
     if (weight !== undefined) updateData.weight = weight;
     if (height !== undefined) updateData.height = height;
+    if (age !== undefined) updateData.age = age;
     if (marital_status !== undefined)
       updateData.marital_status = marital_status;
 
