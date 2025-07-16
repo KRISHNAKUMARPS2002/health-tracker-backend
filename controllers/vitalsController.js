@@ -42,6 +42,7 @@ const addVitals = async (req, res, next) => {
       notes,
       measuredAt,
       status,
+      reasons,
       source,
     });
 
@@ -78,6 +79,7 @@ const updateVitals = async (req, res, next) => {
       temperature,
       spo2,
       weight,
+      height,
       notes,
       measuredAt,
       source,
@@ -118,6 +120,7 @@ const updateVitals = async (req, res, next) => {
       status = result.status;
       reasons = result.reasons;
       updateData.status = status;
+      updateData.reasons = reasons;
     }
 
     const updatedVitals = await updateVitalsById(id, userId, updateData);

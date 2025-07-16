@@ -30,7 +30,15 @@ const insertVitals = async (userId, data) => {
 };
 
 const getVitalsByUserId = async (userId) => {
-  const query = `SELECT * FROM vitals WHERE user_id = $1 ORDER BY measured_at DESC;`;
+  const query = `
+    SELECT 
+      v.*, 
+      u.height 
+    FROM vitals v
+    JOIN users u ON v.user_id = u.id
+    WHERE v.user_id = $1
+    ORDER BY v.measured_at DESC;
+  `;
   const result = await db.query(query, [userId]);
   return result.rows;
 };
